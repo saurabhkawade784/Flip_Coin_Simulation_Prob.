@@ -2,13 +2,13 @@
 #This problem displays the winner Heads or Tails
 echo "Wecome to Flip coin Simulation problem. "
 #Ask user to how much time they want to flip coin
-#read -p "How many time you want to flipping coin? " No_Of_Times
+read -p "How many time you want to flipping coin? " No_Of_Times
 #variables
 Head=1;
 Tail=0;
 Count_Of_Heads=0;
 Count_Of_Tails=0;
-while True
+while (( $No_Of_Times!=0 ))
 do
 	Flip_Coin=$((RANDOM%2))
 	#Random generate 0,1 values.
@@ -23,15 +23,13 @@ do
 		((Count_Of_Tails++))
 	fi
 	#((No_Of_Times--))
-	if(( $Count_Of_Heads==21 )) 
+	if(( $Count_Of_Heads==21 ||  $Count_Of_Tails == 21 )) 
 	then
-		echo "head won :"$(( $Count_Of_Heads - $Count_Of_Tails ))
+		echo "No of heads won : "$(( $Count_Of_Heads - $Count_Of_Tails ))
 		break
-	elif(( $Count_Of_Tails == 21 ))
-	then
-		echo "Tails won :"$((  $Count_Of_Tails - $Count_Of_Heads ))
-		break
+			
 	fi
+	(( No_Of_Times-- ))
 done
 
 #echo "Number's of heads comes are: " $Count_Of_Heads
